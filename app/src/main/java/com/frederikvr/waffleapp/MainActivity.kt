@@ -1,5 +1,6 @@
 package com.frederikvr.waffleapp
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -20,9 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         // Init itemstosell
         var waffleList = mutableListOf<WaffleItem>()
-        var waffle1 = WaffleItem("Zalm",1,0)
-        var waffle2 = WaffleItem("Banaan",2,0)
-        var waffle3 = WaffleItem("Kiwi", 10,0)
+        var waffle1 = WaffleItem("Zalm",1,0, Color.RED)
+        var waffle2 = WaffleItem("Banaan",2,0, Color.BLUE)
+        var waffle3 = WaffleItem("Kiwi", 10,0, Color.BLACK)
         waffleList.add(waffle1)
         waffleList.add(waffle2)
         waffleList.add(waffle3)
@@ -35,9 +36,9 @@ class MainActivity : AppCompatActivity() {
 
         val rvWaffles2 = findViewById<View>(R.id.waffle_list2) as RecyclerView
         var waffleList2 = mutableListOf<WaffleItem>()
-        var waffle21 = WaffleItem("Duvel",1,0)
-        var waffle22 = WaffleItem("Jupiler",2,0)
-        var waffle23 = WaffleItem("Chimay", 10,0)
+        var waffle21 = WaffleItem("Duvel",1,0, Color.RED)
+        var waffle22 = WaffleItem("Jupiler",2,0, Color.CYAN)
+        var waffle23 = WaffleItem("Chimay", 10,0, Color.BLUE)
         waffleList2.add(waffle21)
         waffleList2.add(waffle22)
         waffleList2.add(waffle23)
