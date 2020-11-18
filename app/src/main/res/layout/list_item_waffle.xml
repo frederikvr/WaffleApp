@@ -1,36 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="212dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:orientation="horizontal"
+    android:paddingHorizontal="10dip"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp">
 
     <!-- makes this layout resource available for databinding -->
 
-    <TextView
-        android:id="@+id/waffle_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="30sp" />
-
     <Button
-        android:id="@+id/add_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/add_button1"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
-        android:text="Add" />
-
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:minHeight="1dip"
+        android:text="A BIESLOOK"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/total"
+        android:id="@+id/amount1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:paddingHorizontal="20dip"
+        android:text="0"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/delete_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="1dip"
+        android:minHeight="1dip"
+        android:text="-"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/add_button2"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:insetLeft="20dp"
+        android:minHeight="1dip"
+        android:paddingStart="16dp"
+        android:text="COLA ZERO"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/amount2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dip"
+        android:text="0"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/delete_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="1dip"
+        android:minHeight="1dip"
+        android:text="-"
+        android:textSize="18sp" />
 
 </LinearLayout>
