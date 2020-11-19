@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="koffie">#691901</color>
+    <color name="thee">#C6821E</color>
+    <color name="ijsjes">#0356E5</color>
+    <color name="aard">#218C03</color>
+    <color name="blader">#C55A03</color>
+    <color name="vanille">#FFD740</color>
+    <color name="frisdrank">#D50000</color>
+    <color name="wijn">#689F38</color>
 </resources>

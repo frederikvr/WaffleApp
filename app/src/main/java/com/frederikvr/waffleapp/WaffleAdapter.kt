@@ -1,16 +1,20 @@
 package com.frederikvr.waffleapp
 
+import android.content.Context
 import android.graphics.Color
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class WaffleAdapter(
-    public var mProducts: List<Product>,
+    public var mProducts: List<Product>, val mContext: Context
 ) : RecyclerView.Adapter<WaffleAdapter.ViewHolder>() {
 
     private var plusListener1: ((item: Product) -> Unit)? = null
@@ -72,12 +76,16 @@ class WaffleAdapter(
 
         // Get color to set buttons to
         var color = 0
-        when (product.group2) {
-            "aard" -> color = Color.BLUE
-            "blader" -> color = Color.RED
-            "frisdrank" -> color = Color.LTGRAY
-            // ... add other cases
-
+        when (product.group) {
+            "aard" -> color = mContext.getResources().getColor(R.color.aard)
+            "ijsjes" -> color = mContext.getResources().getColor(R.color.ijsjes)
+            "koffie" -> color = mContext.getResources().getColor(R.color.koffie)
+            "thee" -> color = mContext.getResources().getColor(R.color.thee)
+            "blader" -> color = mContext.getResources().getColor(R.color.blader)
+            "vanille" -> color = mContext.getResources().getColor(R.color.vanille)
+            "frisdrank" -> color = mContext.getResources().getColor(R.color.frisdrank)
+            "bier" -> color = mContext.getResources().getColor(R.color.wijn)
+            "wijn" -> color = mContext.getResources().getColor(R.color.wijn)
             // Default response
             else -> {
                 color = Color.DKGRAY
@@ -109,22 +117,28 @@ class WaffleAdapter(
         nameAddButton2.setText(product.label2)
 
         // Get color to set buttons to
-        var color2 = 0
-        when (product.group) {
-            "aard" -> color2 = Color.BLUE
-            "blader" -> color2 = Color.RED
-            "frisdrank" -> color2 = Color.CYAN
+        color = 0
+        when (product.group2) {
+            "aard" -> color = mContext.getResources().getColor(R.color.aard)
+            "ijsjes" -> color = mContext.getResources().getColor(R.color.ijsjes)
+            "koffie" -> color = mContext.getResources().getColor(R.color.koffie)
+            "thee" -> color = mContext.getResources().getColor(R.color.thee)
+            "blader" -> color = mContext.getResources().getColor(R.color.blader)
+            "vanille" -> color = mContext.getResources().getColor(R.color.vanille)
+            "frisdrank" -> color = mContext.getResources().getColor(R.color.frisdrank)
+            "bier" -> color = mContext.getResources().getColor(R.color.wijn)
+            "wijn" -> color = mContext.getResources().getColor(R.color.wijn)
             // ... add other cases
 
             // Default response
             else -> {
-                color2 = Color.DKGRAY
+                color = Color.DKGRAY
             }
         }
 
         // Set color to buttons
-        nameAddButton2.setBackgroundColor(color2)
-        removeButton2.setBackgroundColor(color2)
+        nameAddButton2.setBackgroundColor(color)
+        removeButton2.setBackgroundColor(color)
 
         // Get amount text view
         val amountTextField2 = viewHolder.amount2

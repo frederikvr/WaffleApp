@@ -1,5 +1,6 @@
 package com.frederikvr.waffleapp
 
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -7,6 +8,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.math.BigDecimal
+import java.math.RoundingMode
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -38,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun BuildAdapter(productList: List<Product>, totalTextView : TextView): WaffleAdapter {
-        val adapter = WaffleAdapter(productList)
+        val adapter = WaffleAdapter(productList, this)
 
         adapter.plusButtonClickListener1 { it ->
             PlusUpdateTotalAndAmount(totalTextView, it, 1)
@@ -61,30 +65,34 @@ class MainActivity : AppCompatActivity() {
 
     private fun PlusUpdateTotalAndAmount(total: TextView, it: Product, i: Int) {
         if (i == 1) {
-            // Update total amount textview
-            var currentTotalAmount = total.text.toString().toDouble()
-            currentTotalAmount += it.price
+            // Update total amount
+            var currentTotalAmount = BigDecimal(total.text.toString())
+            currentTotalAmount += BigDecimal(it.price)
+            // Note that since BigDecimal objects are immutable,
+            // calls of the setScale method do not result in the original object being modified,
+            // contrary to the usual convention of having methods named setX mutate field X.
+            // Instead, setScale returns an object with the proper scale;
+            // the returned object may or may not be newly allocated.
+            var bdcurrentTotalAmount = currentTotalAmount.setScale(2, RoundingMode.HALF_EVEN)
+            total.setText(bdcurrentTotalAmount.toString())
 
-            total.setText(currentTotalAmount.toString())
-
-            // Update product object
+            // Update product quantity
             var currentProductAmount = it.amount
-
             currentProductAmount++
-
             it.amount = currentProductAmount
         } else if (i == 2) {
-            // Update total amount textview
-            var currentTotalAmount = total.text.toString().toDouble()
-            currentTotalAmount += it.price
+            // Update total amount
+            //var currentTotalAmount = total.text.toString().toDouble()
+            //currentTotalAmount += it.price2
+            //total.setText(currentTotalAmount.toString())
+            var currentTotalAmount = BigDecimal(total.text.toString())
+            currentTotalAmount += BigDecimal(it.price2)
+            var bdcurrentTotalAmount = currentTotalAmount.setScale(2, RoundingMode.HALF_EVEN)
+            total.setText(bdcurrentTotalAmount.toString())
 
-            total.setText(currentTotalAmount.toString())
-
-            // Update product object
+            // Update product quantity
             var currentProductAmount = it.amount2
-
             currentProductAmount++
-
             it.amount2 = currentProductAmount
         }
 
@@ -94,32 +102,34 @@ class MainActivity : AppCompatActivity() {
     fun MinusUpdateTotalAndAmount(total: TextView, it: Product, i: Int) {
         if (i == 1) {
             if (it.amount > 0) {
-                // Update text view
-                var currentTotalAmount = total.text.toString().toDouble()
-                currentTotalAmount -= it.price
+                // Update Total amount
+                //var currentTotalAmount = total.text.toString().toDouble()
+                //currentTotalAmount -= it.price
+                //total.setText(currentTotalAmount.toString())
+                var currentTotalAmount = BigDecimal(total.text.toString())
+                currentTotalAmount -= BigDecimal(it.price)
+                var bdcurrentTotalAmount = currentTotalAmount.setScale(2, RoundingMode.HALF_EVEN)
+                total.setText(bdcurrentTotalAmount.toString())
 
-                total.setText(currentTotalAmount.toString())
-
-                // Update Product object
+                // Update Product quantity
                 var currentProductAmount = it.amount
-
                 currentProductAmount--
-
                 it.amount = currentProductAmount
             }
         } else if (i == 2) {
             if (it.amount2 > 0) {
-                // Update text view
-                var currentTotalAmount = total.text.toString().toDouble()
-                currentTotalAmount -= it.price
+                // Update total amount
+                //var currentTotalAmount = total.text.toString().toDouble()
+                //currentTotalAmount -= it.price2
+                //total.setText(currentTotalAmount.toString())
+                var currentTotalAmount = BigDecimal(total.text.toString())
+                currentTotalAmount -= BigDecimal(it.price2)
+                var bdcurrentTotalAmount = currentTotalAmount.setScale(2, RoundingMode.HALF_EVEN)
+                total.setText(bdcurrentTotalAmount.toString())
 
-                total.setText(currentTotalAmount.toString())
-
-                // Update Product object
+                // Update Product quantity
                 var currentProductAmount = it.amount2
-
                 currentProductAmount--
-
                 it.amount2 = currentProductAmount
             }
         }
@@ -130,3 +140,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
