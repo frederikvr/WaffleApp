@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 class WaffleAdapter(
-    public var mProducts: List<Product>,
 ) : RecyclerView.Adapter<WaffleAdapter.ViewHolder>() {
 
     private var plusListener1: ((item: Product) -> Unit)? = null
